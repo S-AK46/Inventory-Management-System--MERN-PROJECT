@@ -45,7 +45,7 @@ router.post("/:id/sell", adminOnly, async (req, res) => {
   const product = await Product.findById(req.params.id);
   if (!product) return res.status(404).json({ message: "Product not found" });
   if (quantityToSell > product.quantity)
-    return res.status(400).json({ message: "Cannot sell more than available stock" });
+    return res.status(400).json({ message: "Sorry,There is no enough stock" });
 
   product.quantity -= quantityToSell;
   product.status = product.quantity > 0 ? "In Stock" : "Out of Stock";

@@ -28,7 +28,7 @@ const Admin = () => {
     }
   };
 
-  const handleAdd = async () => {
+  const addProduct = async () => {
     try {
       const role=user?.role || "user";
       const res = await fetch("http://localhost:5000/products", {
@@ -49,7 +49,7 @@ const Admin = () => {
     }
   };
 
-  const handleDelete = async (id) => {
+  const deleteProducts = async (id) => {
     try {
       const role = user?.role || "user";
       const res = await fetch(`http://localhost:5000/products/${id}`, {
@@ -62,7 +62,7 @@ const Admin = () => {
     }
   };
 
-  const handleSell = async (id) => {
+  const sellProducts = async (id) => {
     const qty = prompt("Enter quantity to sell:");
     if (!qty) return;
 
@@ -114,7 +114,7 @@ const Admin = () => {
         value={form.price}
         onChange={(e) => setForm({ ...form, price: Number(e.target.value) })}
       />
-      <button onClick={handleAdd}>Add Product</button>
+      <button onClick={addProduct}>Add Product</button>
       <h3>Products</h3>
       <input
         type="text"
@@ -141,8 +141,8 @@ const Admin = () => {
               <td>₹{p.price}</td>
               <td>{p.status}</td>
               <td>
-                <button onClick={() => handleSell(p._id)}>Sell</button>
-                <button onClick={() => handleDelete(p._id)}>Delete</button>
+                <button onClick={() => sellProducts(p._id)}>Sell</button>
+                <button onClick={() => deleteProducts(p._id)}>Delete</button>
               </td>
             </tr>
           ))}

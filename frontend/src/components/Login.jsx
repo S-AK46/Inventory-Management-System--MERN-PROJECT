@@ -8,7 +8,7 @@ const Login = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const loginpass = (e) => {
     e.preventDefault();
 
     if (username === "admin" && password === "admin123") {
@@ -26,7 +26,7 @@ const Login = () => {
     <div className="login-container">
       <div className="login-card">
         <h2>Login</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={loginpass}>
           <input
             placeholder="Username"
             value={username}
